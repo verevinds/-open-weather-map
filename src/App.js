@@ -1,10 +1,14 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Weather from './pages/Weather'
 
-function App() {
+const App = () => {
 	return (
-		<div>
-			<h1>Hello</h1>
-		</div>
+		<BrowserRouter>
+			<Switch>
+				<Route exact path='/' component={Weather} />
+			</Switch>
+		</BrowserRouter>
 	)
 }
 
