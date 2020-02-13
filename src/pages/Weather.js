@@ -5,8 +5,9 @@ import WeatherInput from '../components/WeatherInput/WeatherInput'
 import WeatherFavorites from '../components/WeatherFavorites/WeatherFavorites'
 
 import Typography from '@material-ui/core/Typography'
+import { Grid } from '@material-ui/core'
 
-const Weather = () => {
+const Weather = props => {
 	const [city, setCity] = useState({
 		id: null,
 		name: 'null'
@@ -34,11 +35,12 @@ const Weather = () => {
 			}}>
 			<WeatherInput setCity={setCity} city={city} />
 			{city.id ? <WeatherCard city={city} favorites={favorites} /> : null}
-
 			<Typography variant='h3' gutterBottom>
 				Избранное
 			</Typography>
-			<WeatherFavorites favorites={favorites} />
+			<Grid container>
+				<WeatherFavorites favorites={favorites} />
+			</Grid>
 		</ContextWeather.Provider>
 	)
 }
