@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -37,7 +36,7 @@ const WeatherInput = ({ setCity, city: { id, name } }) => {
 		setState(name)
 	}
 	return (
-		<FormControl fullWidth className={classes.margin}>
+		<FormControl fullWidth>
 			<InputLabel htmlFor='standard-adornment-amount'>Название города</InputLabel>
 			<Input
 				id='standard-adornment-amount'
