@@ -13,7 +13,7 @@ const Weather = props => {
 		name: 'null'
 	})
 
-	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
+	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
 	function pushFavorites(id, name) {
 		let newFavorites = [...favorites]
 		newFavorites.push({ id, name })
