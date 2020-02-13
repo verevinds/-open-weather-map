@@ -6,25 +6,11 @@ import Typography from '@material-ui/core/Typography'
 import { Grid } from '@material-ui/core'
 
 const useStyles = makeStyles({
-	root: {
-		minWidth: 275,
-		maxWidth: 400,
-		float: 'left',
-		margin: 10
-	},
-	bullet: {
-		display: 'inline-block',
-		margin: '0 2px',
-		transform: 'scale(0.8)'
-	},
 	title: {
 		fontSize: 14
 	},
 	pos: {
 		marginBottom: 12
-	},
-	right: {
-		marginLeft: 'auto'
 	}
 })
 
@@ -39,10 +25,10 @@ const ForecaseCard = ({ params }) => {
 				{convert(params.dt)}
 			</Typography>
 			<Typography className={classes.pos} color='textSecondary'>
-				Max degrees: {Math.round(params.main.temp_min - 273.15)}&deg;С
+				Min degrees: {Math.round(params.main.temp_min - 273.15)}&deg;С
 			</Typography>
 			<Typography className={classes.pos} color='textSecondary'>
-				Min degrees: {Math.round(params.main.temp_max - 273.15)}&deg;С
+				Max degrees: {Math.round(params.main.temp_max - 273.15)}&deg;С
 			</Typography>
 		</Grid>
 	)

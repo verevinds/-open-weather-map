@@ -6,18 +6,9 @@ import InputLabel from '@material-ui/core/InputLabel'
 import cityJSON from '../../json/city.list.json'
 import { Button } from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		'& > *': {
-			margin: theme.spacing(1)
-		}
-	}
-}))
-
 const WeatherInput = ({ setCity, city: { id, name } }) => {
 	const [prediction, setPrediction] = useState()
 	const [state, setState] = useState('')
-	const classes = useStyles()
 
 	const onClick = () => {
 		let city

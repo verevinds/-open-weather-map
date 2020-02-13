@@ -20,11 +20,6 @@ const useStyles = makeStyles({
 		float: 'left',
 		margin: 10
 	},
-	bullet: {
-		display: 'inline-block',
-		margin: '0 2px',
-		transform: 'scale(0.8)'
-	},
 	title: {
 		fontSize: 14
 	},
