@@ -57,7 +57,11 @@ const WeatherItem = ({ city: { id, name }, favorites }) => {
 	const [favoritesCheck, setFavoritesCheck] = useState(false)
 	const { pushFavorites, removeFavorites } = useContext(ContextWeather)
 	useEffect(() => {
-		if (favorites.find(currentValue => currentValue.id === id)) setFavoritesCheck(true)
+		if (favorites.find(currentValue => currentValue.id === id)) {
+			setFavoritesCheck(true)
+		} else {
+			setFavoritesCheck(false)
+		}
 	}, [id, favorites])
 	const handleFavorites = event => {
 		if (!favoritesCheck) {

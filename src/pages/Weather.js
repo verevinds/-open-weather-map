@@ -4,14 +4,15 @@ import WeatherCard from '../components/WeatherCard/WeatherCard'
 import WeatherInput from '../components/WeatherInput/WeatherInput'
 import WeatherFavorites from '../components/WeatherFavorites/WeatherFavorites'
 
+import Typography from '@material-ui/core/Typography'
+
 const Weather = () => {
 	const [city, setCity] = useState({
-		id: 1496747,
-		name: 'Novosibirsk'
+		id: null,
+		name: 'null'
 	})
 
 	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
-
 	function pushFavorites(id, name) {
 		let newFavorites = [...favorites]
 		newFavorites.push({ id, name })
@@ -31,16 +32,13 @@ const Weather = () => {
 				pushFavorites,
 				removeFavorites
 			}}>
-			<WeatherInput setState={setCity} city={city} />
-			<WeatherCard city={city} favorites={favorites} />
+			<WeatherInput setCity={setCity} city={city} />
+			{city.id ? <WeatherCard city={city} favorites={favorites} /> : null}
+
+			<Typography variant='h3' gutterBottom>
+				Избранное
+			</Typography>
 			<WeatherFavorites favorites={favorites} />
-			{/* <WeatherCard
-				city={{
-					id: 707860,
-					name: 'Hurzuf'
-				}}
-				favorites={favorites}
-			/> */}
 		</ContextWeather.Provider>
 	)
 }
