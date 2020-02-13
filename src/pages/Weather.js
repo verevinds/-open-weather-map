@@ -1,36 +1,47 @@
-import React from 'react'
-import { gql } from 'apollo-boost'
-import { useQuery } from '@apollo/react-hooks'
-
-const GET_WEATHER = gql`
-	query($city: String!, $countryCode: String!) {
-		getWeather(city: $city, countryCode: $countryCode) {
-			city {
-				id
-				name
-			}
-			celcius_avg
-			celcius_max_avg
-		}
-	}
-`
+import React, { useState, useEffect } from 'react'
+import { ContextWeather } from '../context/ContextWeather'
+import WeatherCard from '../components/WeatherCard/WeatherCard'
+import WeatherInput from '../components/WeatherInput/WeatherInput'
+import WeatherFavorites from '../components/WeatherFavorites/WeatherFavorites'
 
 const Weather = () => {
-	const { loading, error, data } = useQuery(GET_WEATHER, {
-		variables: { city: 'Novosibirsk', countryCode: 1496747 }
+	const [city, setCity] = useState({
+		id: 1496747,
+		name: 'Novosibirsk'
 	})
 
-	if (loading) {
-		return <p>Loading...</p>
-	} else {
-		console.log(data.getWeather)
+	const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
+
+	function pushFavorites(id, name) {
+		let newFavorites = [...favorites]
+		newFavorites.push({ id, name })
+		setFavorites(newFavorites)
 	}
-	if (error) return <p>{`Error: ${error.message}`}</p>
+	function removeFavorites(id) {
+		let newFavorites = favorites.filter(item => item.id !== id)
+		setFavorites(newFavorites)
+	}
+	useEffect(() => {
+		localStorage.setItem('favorites', JSON.stringify(favorites))
+	}, [favorites])
 
 	return (
-		<div>
-			<h1>Hello</h1>
-		</div>
+		<ContextWeather.Provider
+			value={{
+				pushFavorites,
+				removeFavorites
+			}}>
+			<WeatherInput setState={setCity} city={city} />
+			<WeatherCard city={city} favorites={favorites} />
+			<WeatherFavorites favorites={favorites} />
+			{/* <WeatherCard
+				city={{
+					id: 707860,
+					name: 'Hurzuf'
+				}}
+				favorites={favorites}
+			/> */}
+		</ContextWeather.Provider>
 	)
 }
 
