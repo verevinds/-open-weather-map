@@ -1,9 +1,28 @@
+# Application "Weather"
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+
+## №1 Running GraphQL server
+
+For backend, I used a ready-made server solution on Graphql.
+First you need to download the server, run it:
+```
+git clone https://github.com/ronal2do/graphql-weather-api.git
+cd graphql-weather-api
+npm install
+npm run start
+```
+
+## №2 Running React-App "Weather"
+
+```
+git clone https://github.com/verevinds/-open-weather-map.git
+cd -open-weather-map
+npm install
+npm run start
+```
 
 In the project directory, you can run:
-
 ### `yarn start`
 
 Runs the app in the development mode.<br />
